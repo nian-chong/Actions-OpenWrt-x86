@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: Build OpenWrt-x86
+name: Build OpenWrt-raspi4
 
 on:
 #  release:
@@ -16,8 +16,8 @@ on:
 #      - master
     paths:
       - '.config'
-#  schedule:
-#    - cron: 0 8 * * 5
+  schedule:
+    - cron:: 0 20 * * *
   watch:
     types: [started]
 
@@ -122,5 +122,5 @@ jobs:
       uses: actions/upload-artifact@master
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: OpenWrt_firmware
+        name: OpenWrt_firmware_raspi4
         path: ${{ env.FIRMWARE }}
